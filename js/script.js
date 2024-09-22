@@ -45,7 +45,7 @@ const closePop = document.querySelectorAll('.popup-close');
 if (closePop) {
     closePop.forEach((close) => {
         close.addEventListener('click', function () {
-            this.parentNode.style.transform = 'scale(0) translate(-50%, -50%)';
+            this.parentNode.style.transform = 'translate(-50%, -1000px)';
             this.parentNode.setAttribute('aria-hidden', 'true');
         });
     });
@@ -56,7 +56,7 @@ const popups = document.querySelectorAll('.popup');
 
 if (popups) {
     popups.forEach((pop) => {
-        pop.style.transform = 'scale(0) translate(-50%, -50%)';
+        pop.style.transform = 'translate(-50%, -1000px)';
         pop.parentNode.setAttribute('aria-hidden', 'true');
     });
 }
@@ -67,7 +67,7 @@ if (depositBtn) {
     const depositPop = document.querySelector('.popup-deposit');
 
     depositBtn.addEventListener('click', function () {
-        depositPop.style.transform = 'scale(1) translate(-50%, -50%)';
+        depositPop.style.transform = 'translate(-50%, -50%)';
         depositPop.parentNode.setAttribute('aria-hidden', 'false');
     });
 }

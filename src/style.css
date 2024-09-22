@@ -22,6 +22,14 @@
     background: transparent;
 }
 
+.header-scrolled .header-content {
+    padding-bottom: 0px;
+}
+
+.header-scrolled .tab-buttons {
+    padding-top: 10px;
+}
+
 /* ----- Tab Buttons */
 .tab-buttons button {
     background: white;
