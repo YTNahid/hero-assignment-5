@@ -2,23 +2,24 @@
 ========================================================================== */
 /*
  * Global Fonts and Colors ---------
- * Font: 'Inter', sans-serif
+ * Font: "Lexend", sans-serif
  * Primary Color: #E6533C
  * Text Color: #FFFFFF
  * Others: Background: #222222
  */
 
 :root {
-    --content-width: 1060px;
-    --gap: 15px;
+    --content-width: 1140px;
+    --gap: 20px;
     --column-padding: 10px;
 
-    --primary-color: #e6533c;
-    --bg-color: #222222;
-    --heading-color: white;
-    --text-color: white;
+    --primary-color: #b4f461;
+    --bg-color: #f9f7f3;
+    --heading-color: #111111;
+    --text-color: rgba(17, 17, 17, 0.7);
+    --border-color: rgba(17, 17, 17, 0.3);
 
-    --primary-font: 'Inter', sans-serif;
+    --primary-font: 'Lexend', sans-serif;
 }
 
 /* Global CSS Style
@@ -71,7 +72,7 @@ body {
     color: var(--heading-color);
     line-height: 1.2em;
     margin: 0;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 h1.heading {
@@ -83,8 +84,9 @@ h2.heading {
 }
 
 h3.heading {
-    font-size: 28px;
+    font-size: 20px;
     line-height: 1.5em;
+    font-weight: 700;
 }
 
 h4.heading {
@@ -94,11 +96,10 @@ h4.heading {
 
 .text {
     color: var(--text-color);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7em;
+    opacity: 0.7;
     margin: 0;
-    opacity: 0.5;
-    letter-spacing: 0.3px;
 }
 .text-gap {
     margin-bottom: 15px;
@@ -115,6 +116,15 @@ a {
 
 ul {
     margin: 0;
+}
+
+/* Buttons */
+.button {
+    background: var(--primary-color);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px 32px;
 }
 
 @media only screen and (max-width: 576px) {

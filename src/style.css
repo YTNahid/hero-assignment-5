@@ -1,0 +1,29 @@
+:root {
+    --content-width: 1140px;
+    --gap: 20px;
+    --column-padding: 10px;
+
+    --primary-color: #b4f461;
+    --bg-color: #f9f7f3;
+    --heading-color: #111111;
+    --text-color: #111111;
+    --border-color: rgba(17, 17, 17, 0.3);
+
+    --primary-font: 'Lexend', sans-serif;
+}
+
+/* ----- Tab Buttons */
+.tab-buttons button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+}
+
+.tab-buttons button.active {
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* Deposite Popup */
+.popup-deposite.hide {
+    transform: scale(0);
+}
