@@ -1287,6 +1287,10 @@ input.tab:checked + .tab-content,
   margin-inline-start: calc(var(--border-btn) * -1);
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1522,6 +1526,10 @@ input.tab:checked + .tab-content,
   padding: 2rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1593,6 +1601,11 @@ input.tab:checked + .tab-content,
 
 .font-bold {
   font-weight: 700;
+}
+
+.text-primary-color {
+  --tw-text-opacity: 1;
+  color: rgb(180 244 97 / var(--tw-text-opacity));
 }
 
 .shadow {

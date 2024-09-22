@@ -44,7 +44,7 @@
     </header>
 
     <!-- Popup Deposit Form -->
-    <div class="popup popup-deposit bg-white rounded-2xl p-8 z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl origin-center" area-hidden="true">
+    <div class="popup popup-deposit bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl origin-center" area-hidden="true">
         <span class="popup-close absolute right-[30px] cursor-pointer top-[30px]">x</span>
         <h3 class="heading text-center mb-5">Deposit Money</h3>
         <form class="column w-[400px]">
@@ -54,7 +54,7 @@
     </div>
 
     <!-- Popup Donation Successfull -->
-    <div class="popup popup-success flex-col items-center bg-white rounded-2xl p-8 z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl origin-center" area-hidden="true">
+    <div class="popup popup-success flex-col items-center bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl origin-center" area-hidden="true">
         <span class="popup-close absolute right-[30px] cursor-pointer top-[30px]">x</span>
         <h3 class="heading text-center mb-5">Congrats!</h3>
         <img src="./assets/coin.png" alt="Coin" class="max-w-9 m-auto">
@@ -66,6 +66,7 @@
     <main>
         <!-- Donate Content -->
         <section class="tab-contents donate-content section">
+            <!-- Noakhali -->
             <div class="row border border-border-color rounded-2xl p-4">
                 <div class="column pr-5">
                     <img src="./assets/noakhali.png" alt="Feni" class="h-full object-cover rounded-xl">
@@ -79,21 +80,69 @@
                     <h3 class="heading">Donate for Flood at Noakhali, Bangladesh</h3>
                     <p class="text">The recent floods in Noakhali have caused significant damage to homes
                         infrastructure. Your donation will help provide essential supplies and to those affected by this
-                        disaster. Every contribution, big or small, makes difference. Please join us in supporting the
-                        relief efforts and making a positive impact on the lives of those in need</p>
-
-                    <form action="" class="w-full"></form>
-                    <input type="text" placeholder="Write Donation Amount"
-                        class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
-                    <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer">
+                        disaster. Every contribution, big or small, makes a difference. Please join us in supporting the
+                        relief efforts and making a positive impact on the lives of those in need.</p>
+                    <form action="" class="w-full">
+                        <input type="text" placeholder="Write Donation Amount" class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
+                        <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer mt-4">
                     </form>
                 </div>
             </div>
+        
+            <!-- Feni -->
+            <div class="row border border-border-color rounded-2xl p-4">
+                <div class="column pr-5">
+                    <img src="./assets/feni.png" alt="Feni" class="h-full object-cover rounded-xl">
+                </div>
+                <div class="donatee-box column items-start">
+                    <span class="flex flex-row items-center gap-2 bg-[#111111] bg-opacity-5 py-[10px] px-4 rounded-lg">
+                        <img src="./assets/coin.png" alt="Coin" class="max-w-7 mr-1">
+                        <span class="total-donation text text-xl">0.00</span>
+                        <span class="currency">BDT</span>
+                    </span>
+                    <h3 class="heading">Donate for Flood at Noakhali, Bangladesh</h3>
+                    <p class="text">The recent floods in Noakhali have caused significant damage to homes
+                        infrastructure. Your donation will help provide essential supplies and to those affected by this
+                        disaster. Every contribution, big or small, makes a difference. Please join us in supporting the
+                        relief efforts and making a positive impact on the lives of those in need.</p>
+                    <form action="" class="w-full">
+                        <input type="text" placeholder="Write Donation Amount" class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
+                        <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer mt-4">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Protest -->
+            <div class="row border border-border-color rounded-2xl p-4">
+                <div class="column pr-5">
+                    <img src="./assets/quota-protest.png" alt="Feni" class="h-full object-cover rounded-xl">
+                </div>
+                <div class="donatee-box column items-start">
+                    <span class="flex flex-row items-center gap-2 bg-[#111111] bg-opacity-5 py-[10px] px-4 rounded-lg">
+                        <img src="./assets/coin.png" alt="Coin" class="max-w-7 mr-1">
+                        <span class="total-donation text text-xl">0.00</span>
+                        <span class="currency">BDT</span>
+                    </span>
+                    <h3 class="heading">Donate for Flood at Noakhali, Bangladesh</h3>
+                    <p class="text">The recent floods in Noakhali have caused significant damage to homes
+                        infrastructure. Your donation will help provide essential supplies and to those affected by this
+                        disaster. Every contribution, big or small, makes a difference. Please join us in supporting the
+                        relief efforts and making a positive impact on the lives of those in need.</p>
+                    <form action="" class="w-full">
+                        <input type="text" placeholder="Write Donation Amount" class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
+                        <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer mt-4">
+                    </form>
+                </div>
             </div>
         </section>
+        
+        
+        
 
         <!-- History Content -->
-        <section class="tab-contents section hidden">Hello H</section>
+        <section class="tab-contents history-content section hidden">
+            <p class="text-center h-empty">Your history is Empty</p>
+        </section>
     </main>
 
     <!-- ---------------------- This is the main Footer ---------------------- -->

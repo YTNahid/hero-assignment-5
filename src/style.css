@@ -27,3 +27,8 @@
 .popup-deposite.hide {
     transform: scale(0);
 }
+
+/* History message */
+.h-action {
+    color: blue;
+}
