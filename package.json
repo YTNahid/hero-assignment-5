@@ -1,0 +1,23 @@
+{
+    "name": "hero-assignment-5",
+    "version": "1.0.0",
+    "description": "- Do not ask about mark distribution in the group, as it will not be provided.\r - Do not post assignment feedback after receiving it. If you encounter issues or have complaints, please join a support session for discussion.\r - Avoid using \"lorem ipsum\" text. Use relevant and meaningful content instead.\r - Feel free to modify the color or design, but ensure the design is visually appealing and professional.\r - You are **not allowed** to use any JavaScript library or framework for this assignment.",
+    "main": "tailwind.config.js",
+    "scripts": {
+        "start": "tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YTNahid/hero-assignment-5.git"
+    },
+    "author": "YTNahid",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/YTNahid/hero-assignment-5/issues"
+    },
+    "homepage": "https://github.com/YTNahid/hero-assignment-5#readme",
+    "devDependencies": {
+        "daisyui": "^4.12.10",
+        "tailwindcss": "^3.4.12"
+    }
+}
