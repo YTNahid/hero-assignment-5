@@ -12,9 +12,19 @@
     --primary-font: 'Lexend', sans-serif;
 }
 
+/* Header */
+.header-scrolled {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+}
+
+.header-scrolled > div {
+    background: transparent;
+}
+
 /* ----- Tab Buttons */
 .tab-buttons button {
-    background: transparent;
+    background: white;
     border: 1px solid var(--border-color);
 }
 
@@ -31,4 +41,9 @@
 /* History message */
 .h-action {
     color: blue;
+}
+
+button:hover,
+input[type='submit']:hover {
+    transform: scale(1.02);
 }

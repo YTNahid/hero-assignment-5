@@ -1,3 +1,27 @@
+// ----- Sticky Header
+const header = document.querySelector('.header-sticky');
+
+const toggleHeaderClass = () => {
+    if (window.scrollY > 0) {
+        header.classList.add('header-scrolled');
+    } else {
+        header.classList.remove('header-scrolled');
+    }
+};
+
+window.addEventListener('scroll', toggleHeaderClass);
+
+// ----- Formatting Taka with commas
+function formatTaka(amount) {
+    const numString = amount.toString();
+    const lastThreeDigits = numString.slice(-6);
+    const otherDigits = numString.slice(0, -6);
+
+    const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+
+    return otherDigits.length > 0 ? `${formattedOtherDigits},${lastThreeDigits}` : lastThreeDigits;
+}
+
 // ----- Tab
 const tabButtons = document.querySelectorAll('.tab-buttons button');
 const tabContents = document.querySelectorAll('.tab-contents');
@@ -53,35 +77,26 @@ let currBalance = document.querySelector('.current-balance');
 
 const deposit = document.querySelector('.deposit-button');
 
-function updateBalanceInLocalStorage(balance) {
-    localStorage.setItem('currentBalance', balance);
-}
-
-function loadBalanceFromLocalStorage() {
-    const storedBalance = localStorage.getItem('currentBalance');
-    if (storedBalance) {
-        currBalance.innerText = parseFloat(storedBalance).toFixed(2);
-    }
-}
-
 if (deposit) {
     deposit.addEventListener('click', function (event) {
         event.preventDefault();
 
         const depositAmount = document.querySelector('.deposit-amount').value;
-        const amount = parseFloat(depositAmount);
+        const amount = parseFloat(depositAmount.replace(/,/g, ''));
 
-        if (isNaN(depositAmount) || depositAmount === '') {
+        if (isNaN(amount) || amount === '') {
             alert('Invalid Empty Value');
         } else if (amount < 100) {
             alert('Minimum Deposit Amount is 100 BDT');
         } else {
-            const currentTotal = parseFloat(currBalance.innerText) + amount;
-            currBalance.innerText = currentTotal.toFixed(2);
-            updateBalanceInLocalStorage(currentTotal.toFixed(2)); // Save to local storage
-            alert(`${amount.toFixed(2)} BDT added successfully. Current Balance: ${currentTotal.toFixed(2)} BDT`);
+            const currentTotal = parseFloat(currBalance.innerText.replace(/,/g, '')) + amount;
+            currBalance.innerText = formatTaka(currentTotal.toFixed(2));
 
-            addHistory(amount, '', 'deposited');
+            updateBalanceInLocalStorage(currentTotal.toFixed(2)); // Save to local storage
+
+            alert(`${formatTaka(amount.toFixed(2))} added successfully. Current Balance: ${formatTaka(currentTotal.toFixed(2))}`);
+
+            addHistory(amount, '', 'deposited', currentTotal);
         }
     });
 }
@@ -96,8 +111,8 @@ if (donateBtn) {
         btn.addEventListener('click', function (event) {
             event.preventDefault();
 
-            const amount = parseFloat(donationAmount[index].value);
-            const updatedBalance = parseFloat(currBalance.innerText) - amount;
+            const amount = parseFloat(donationAmount[index].value.replace(/,/g, ''));
+            const updatedBalance = parseFloat(currBalance.innerText.replace(/,/g, '')) - amount;
 
             if (isNaN(amount) || amount === '') {
                 alert('Invalid or Empty Value');
@@ -106,27 +121,29 @@ if (donateBtn) {
             } else if (updatedBalance < 0) {
                 alert('Insufficient Balance');
             } else {
-                const updateDonationTotal = parseFloat(totalDonation[index].innerText) + amount;
-                totalDonation[index].innerText = updateDonationTotal.toFixed(2);
-                currBalance.innerText = updatedBalance.toFixed(2);
-                updateBalanceInLocalStorage(updatedBalance.toFixed(2)); // Save balance
-                updateDonationInLocalStorage(index, amount); // Save donation
+                const updateDonationTotal = parseFloat(totalDonation[index].innerText.replace(/,/g, '')) + amount;
+
+                totalDonation[index].innerText = formatTaka(updateDonationTotal.toFixed(2));
+                currBalance.innerText = formatTaka(updatedBalance.toFixed(2));
+
+                updateBalanceInLocalStorage(updatedBalance.toFixed(2));
+                updateDonationInLocalStorage(index, amount);
 
                 const successPop = document.querySelector('.popup-success');
-                document.querySelector('.donatedMsg').innerText = `${amount.toFixed(2)} BDT`;
+                document.querySelector('.donatedMsg').innerText = `${formatTaka(amount.toFixed(2))}`;
 
                 successPop.style.transform = 'scale(1) translate(-50%, -50%)';
                 successPop.parentNode.setAttribute('aria-hidden', 'false');
 
                 const title = this.parentNode.parentNode.querySelector('h3').innerText.replace('Donate', '').trim();
-                addHistory(amount, title, 'Donated');
+                addHistory(amount, title, 'Donated', updatedBalance);
             }
         });
     });
 }
 
 // ----- History Function
-function addHistory(amount, title, action) {
+function addHistory(amount, title, action, newBalance) {
     const content = document.querySelector('.history-content');
 
     const date = new Date();
@@ -144,16 +161,20 @@ function addHistory(amount, title, action) {
 
     const message = `
         <div class="column border border-border-color rounded-2xl p-6">
-            <h3 class="heading"><span class="h-amount">${amount}</span> BDT is <span class="h-action">${action} </span><span class="h-title ">${title}</span></h3>
+            <h3 class="heading">
+                <span class="h-amount">${formatTaka(amount.toFixed(2))}</span> is 
+                <span class="h-action">${action}</span> for 
+                <span class="h-title">${title}</span>
+                <span>(New Balance: ${formatTaka(newBalance.toFixed(2))})</span>
+            </h3>
             <p>Date: ${formattedDate} (Bangladesh Standard Time)</p>
         </div>
     `;
 
     content.insertAdjacentHTML('afterbegin', message);
 
-    // Local Storage
     const history = JSON.parse(localStorage.getItem('donationHistory')) || [];
-    history.push({ amount, title, action, date: formattedDate });
+    history.push({ amount, title, action, newBalance, date: formattedDate });
     saveHistoryToLocalStorage(history);
 
     if (content.querySelectorAll('div').length !== 0) {
@@ -164,6 +185,17 @@ function addHistory(amount, title, action) {
 }
 
 // ----- Local Storage
+function updateBalanceInLocalStorage(balance) {
+    localStorage.setItem('currentBalance', balance);
+}
+
+function loadBalanceFromLocalStorage() {
+    const storedBalance = localStorage.getItem('currentBalance');
+    if (storedBalance) {
+        currBalance.innerText = formatTaka(parseFloat(storedBalance).toFixed(2));
+    }
+}
+
 function updateDonationInLocalStorage(index, amount) {
     const donations = JSON.parse(localStorage.getItem('donations')) || [];
     donations[index] = (donations[index] || 0) + amount;
@@ -174,7 +206,7 @@ function loadDonationsFromLocalStorage() {
     const donations = JSON.parse(localStorage.getItem('donations')) || [];
     donations.forEach((amount, index) => {
         if (amount) {
-            totalDonation[index].innerText = amount.toFixed(2);
+            totalDonation[index].innerText = formatTaka(amount.toFixed(2));
         }
     });
 }
@@ -190,7 +222,12 @@ function loadHistoryFromLocalStorage() {
     history.forEach((entry) => {
         const message = `
             <div class="column border border-border-color rounded-2xl p-6">
-                <h3 class="heading"><span class="h-amount">${entry.amount}</span> BDT is <span class="h-action">${entry.action} </span><span class="h-title ">${entry.title}</span></h3>
+                <h3 class="heading">
+                    <span class="h-amount">${formatTaka(entry.amount.toFixed(2))}</span> is 
+                    <span class="h-action">${entry.action}</span> for 
+                    <span class="h-title">${entry.title}</span>
+                    <span>(New Balance: ${formatTaka(entry.newBalance.toFixed(2))})</span>
+                </h3>
                 <p>Date: ${entry.date} (Bangladesh Standard Time)</p>
             </div>
         `;
