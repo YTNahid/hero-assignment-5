@@ -13,6 +13,7 @@ window.addEventListener('scroll', toggleHeaderClass);
 
 // ----- Formatting Taka with commas
 function formatTaka(amount) {
+    // Reusable Function
     const numString = amount.toString();
     const lastThreeDigits = numString.slice(-6);
     const otherDigits = numString.slice(0, -6);
@@ -74,6 +75,7 @@ if (depositBtn) {
 
 // Deposit
 let currBalance = document.querySelector('.current-balance');
+currBalance.innerText = '0.00';
 
 const deposit = document.querySelector('.deposit-button');
 
@@ -144,6 +146,7 @@ if (donateBtn) {
 
 // ----- History Function
 function addHistory(amount, title, action, newBalance) {
+    // Reusable Function
     const content = document.querySelector('.history-content');
 
     const date = new Date();
@@ -223,10 +226,10 @@ function loadHistoryFromLocalStorage() {
         const message = `
             <div class="column border border-border-color rounded-2xl p-6">
                 <h3 class="heading">
-                    <span class="h-amount">${formatTaka(entry.amount.toFixed(2))}</span> is 
+                    <span class="h-amount">${formatTaka(entry.amount)}</span> is 
                     <span class="h-action">${entry.action}</span> for 
                     <span class="h-title">${entry.title}</span>
-                    <span>(New Balance: ${formatTaka(entry.newBalance.toFixed(2))})</span>
+                    <span>(New Balance: ${formatTaka(entry.newBalance)})</span>
                 </h3>
                 <p>Date: ${entry.date} (Bangladesh Standard Time)</p>
             </div>
