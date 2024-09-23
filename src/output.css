@@ -2034,6 +2034,14 @@ details.collapse summary::-webkit-details-marker {
     width: 60% !important;
   }
 
+  .sm\:\!w-\[12\%\] {
+    width: 12% !important;
+  }
+
+  .sm\:\!w-\[68\%\] {
+    width: 68% !important;
+  }
+
   .sm\:max-w-9 {
     max-width: 2.25rem;
   }
