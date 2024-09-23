@@ -47,9 +47,9 @@
 }
 
 /* History message */
-.h-action {
-    color: blue;
-}
+/* .h-action {
+    color: green;
+} */
 
 button:hover,
 input[type='submit']:hover {

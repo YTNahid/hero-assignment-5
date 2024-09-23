@@ -91,14 +91,16 @@ if (deposit) {
         } else if (amount < 100) {
             alert('Minimum Deposit Amount is 100 BDT');
         } else {
-            const currentTotal = parseFloat(currBalance.innerText.replace(/,/g, '')) + amount;
-            currBalance.innerText = formatTaka(currentTotal.toFixed(2));
+            if (confirm(`Are you sure you want to deposit ${formatTaka(amount.toFixed(2))} BDT?`)) {
+                const currentTotal = parseFloat(currBalance.innerText.replace(/,/g, '')) + amount;
+                currBalance.innerText = formatTaka(currentTotal.toFixed(2));
 
-            updateBalanceInLocalStorage(currentTotal.toFixed(2)); // Save to local storage
+                updateBalanceInLocalStorage(currentTotal.toFixed(2)); // Save to local storage
 
-            alert(`${formatTaka(amount.toFixed(2))} added successfully. Current Balance: ${formatTaka(currentTotal.toFixed(2))}`);
+                alert(`${formatTaka(amount.toFixed(2))} added successfully. Current Balance: ${formatTaka(currentTotal.toFixed(2))}`);
 
-            addHistory(amount, '', 'deposited', currentTotal);
+                addHistory(amount, '', 'Deposited', currentTotal);
+            }
         }
     });
 }
@@ -123,22 +125,24 @@ if (donateBtn) {
             } else if (updatedBalance < 0) {
                 alert('Insufficient Balance');
             } else {
-                const updateDonationTotal = parseFloat(totalDonation[index].innerText.replace(/,/g, '')) + amount;
+                if (confirm(`Are you sure you want to donate ${formatTaka(amount.toFixed(2))} BDT?`)) {
+                    const updateDonationTotal = parseFloat(totalDonation[index].innerText.replace(/,/g, '')) + amount;
 
-                totalDonation[index].innerText = formatTaka(updateDonationTotal.toFixed(2));
-                currBalance.innerText = formatTaka(updatedBalance.toFixed(2));
+                    totalDonation[index].innerText = formatTaka(updateDonationTotal.toFixed(2));
+                    currBalance.innerText = formatTaka(updatedBalance.toFixed(2));
 
-                updateBalanceInLocalStorage(updatedBalance.toFixed(2));
-                updateDonationInLocalStorage(index, amount);
+                    updateBalanceInLocalStorage(updatedBalance.toFixed(2));
+                    updateDonationInLocalStorage(index, amount);
 
-                const successPop = document.querySelector('.popup-success');
-                document.querySelector('.donatedMsg').innerText = `${formatTaka(amount.toFixed(2))}`;
+                    const successPop = document.querySelector('.popup-success');
+                    document.querySelector('.donatedMsg').innerText = `${formatTaka(amount.toFixed(2))}`;
 
-                successPop.style.transform = 'scale(1) translate(-50%, -50%)';
-                successPop.parentNode.setAttribute('aria-hidden', 'false');
+                    successPop.style.transform = 'scale(1) translate(-50%, -50%)';
+                    successPop.parentNode.setAttribute('aria-hidden', 'false');
 
-                const title = this.parentNode.parentNode.querySelector('h3').innerText.replace('Donate', '').trim();
-                addHistory(amount, title, 'Donated', updatedBalance);
+                    const title = this.parentNode.parentNode.querySelector('h3').innerText.replace('Donate', '').trim();
+                    addHistory(amount, title, 'Donated', updatedBalance);
+                }
             }
         });
     });
@@ -166,7 +170,7 @@ function addHistory(amount, title, action, newBalance) {
         <div class="column border border-border-color rounded-2xl p-6">
             <h3 class="heading">
                 <span class="h-amount">${formatTaka(amount.toFixed(2))}</span> is 
-                <span class="h-action">${action}</span> for 
+                <span class="h-action">${action}</span>
                 <span class="h-title">${title}</span>
                 <span>(New Balance: ${formatTaka(newBalance.toFixed(2))})</span>
             </h3>
@@ -226,10 +230,10 @@ function loadHistoryFromLocalStorage() {
         const message = `
             <div class="column border border-border-color rounded-2xl p-6">
                 <h3 class="heading">
-                    <span class="h-amount">${formatTaka(entry.amount)}</span> is 
-                    <span class="h-action">${entry.action}</span> for 
+                    <span class="h-amount">${formatTaka(entry.amount.toFixed(2))}</span> is 
+                    <span class="h-action">${entry.action}</span> 
                     <span class="h-title">${entry.title}</span>
-                    <span>(New Balance: ${formatTaka(entry.newBalance)})</span>
+                    <span>(New Balance: ${formatTaka(entry.newBalance.toFixed(2))})</span>
                 </h3>
                 <p>Date: ${entry.date} (Bangladesh Standard Time)</p>
             </div>
@@ -248,4 +252,14 @@ document.addEventListener('DOMContentLoaded', function () {
     loadBalanceFromLocalStorage();
     loadDonationsFromLocalStorage();
     loadHistoryFromLocalStorage();
+
+    const hAction = document.querySelectorAll('.h-action');
+
+    if (hAction) {
+        hAction.forEach((el) => {
+            console.log(el);
+            if (el.innerText === 'Deposited') el.style.color = 'green';
+            else el.style.color = 'blue';
+        });
+    }
 });
