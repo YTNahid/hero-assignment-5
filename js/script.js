@@ -170,7 +170,7 @@ function addHistory(amount, title, action, newBalance) {
         <div class="column border border-border-color rounded-2xl p-6">
             <h3 class="heading">
                 <span class="h-amount">${formatTaka(amount.toFixed(2))}</span> is 
-                <span class="h-action">${action}</span>
+                <span class="h-action ${action === 'Deposited' ? 'deposited' : 'donated'}">${action}</span>
                 <span class="h-title">${title}</span>
                 <span>(New Balance: ${formatTaka(newBalance.toFixed(2))})</span>
             </h3>
@@ -231,7 +231,7 @@ function loadHistoryFromLocalStorage() {
             <div class="column border border-border-color rounded-2xl p-6">
                 <h3 class="heading">
                     <span class="h-amount">${formatTaka(entry.amount.toFixed(2))}</span> is 
-                    <span class="h-action">${entry.action}</span> 
+                    <span class="h-action ${entry.action === 'Deposited' ? 'deposited' : 'donated'}">${entry.action}</span> 
                     <span class="h-title">${entry.title}</span>
                     <span>(New Balance: ${formatTaka(entry.newBalance.toFixed(2))})</span>
                 </h3>
@@ -252,14 +252,4 @@ document.addEventListener('DOMContentLoaded', function () {
     loadBalanceFromLocalStorage();
     loadDonationsFromLocalStorage();
     loadHistoryFromLocalStorage();
-
-    const hAction = document.querySelectorAll('.h-action');
-
-    if (hAction) {
-        hAction.forEach((el) => {
-            console.log(el);
-            if (el.innerText === 'Deposited') el.style.color = 'green';
-            else el.style.color = 'blue';
-        });
-    }
 });

@@ -47,9 +47,12 @@
 }
 
 /* History message */
-/* .h-action {
+.h-action.deposited {
     color: green;
-} */
+}
+.h-action.donated {
+    color: blue;
+}
 
 button:hover,
 input[type='submit']:hover {

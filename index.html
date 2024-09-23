@@ -102,11 +102,8 @@
                         <span class="total-donation text text-xl">54,373.00</span>
                         <span class="currency">BDT</span>
                     </span>
-                    <h3 class="heading">Donate for Flood at Noakhali, Bangladesh</h3>
-                    <p class="text">The recent floods in Noakhali have caused significant damage to homes
-                        infrastructure. Your donation will help provide essential supplies and to those affected by this
-                        disaster. Every contribution, big or small, makes a difference. Please join us in supporting the
-                        relief efforts and making a positive impact on the lives of those in need.</p>
+                    <h3 class="heading">Donate for Flood Relief in Feni,Bangladesh</h3>
+                    <p class="text">The recent floods in Feni have devastated local communities, leading to severe disruption and loss. Your generous donation will help provide immediate aid, including food, clean water, and medical supplies, to those affected by this calamity. Together, we can offer crucial support and help rebuild lives in the aftermath of this disaster. Every contribution counts towards making a real difference. Please consider donating today to assist those in urgent need.</p>
                     <form action="" class="w-full">
                         <input type="text" placeholder="Write Donation Amount" class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
                         <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer mt-4">
@@ -125,11 +122,8 @@
                         <span class="total-donation text text-xl">1,35,637.00</span>
                         <span class="currency">BDT</span>
                     </span>
-                    <h3 class="heading">Donate for Flood at Noakhali, Bangladesh</h3>
-                    <p class="text">The recent floods in Noakhali have caused significant damage to homes
-                        infrastructure. Your donation will help provide essential supplies and to those affected by this
-                        disaster. Every contribution, big or small, makes a difference. Please join us in supporting the
-                        relief efforts and making a positive impact on the lives of those in need.</p>
+                    <h3 class="heading">Aid for Injured in the Quota Movement</h3>
+                    <p class="text">The recent floods in Feni have devastated local communities, leading to severe disruption and loss. Your generous donation will help provide immediate aid, including food, clean water, and medical supplies, to those affected by this calamity. Together, we can offer crucial support and help rebuild lives in the aftermath of this disaster. Every contribution counts towards making a real difference. Please consider donating today to assist those in urgent need.</p>
                     <form action="" class="w-full">
                         <input type="text" placeholder="Write Donation Amount" class="donation-amount w-full border border-border-color rounded-lg p-[18px]">
                         <input type="submit" value="Donate" class="donate-button button w-full cursor-pointer mt-4">
@@ -151,6 +145,18 @@
 
     <!-- Javascript -->
     <script src="./js/script.js"></script>
+
+    <script>
+        const hAction = document.querySelectorAll('.h-action');
+
+        if (hAction) {
+            hAction.forEach((el) => {
+                console.log(el);
+                if (el.innerText === 'Deposited') el.style.color = 'green';
+                else el.style.color = 'blue';
+            });
+        }
+    </script>
 </body>
 
 </html>
