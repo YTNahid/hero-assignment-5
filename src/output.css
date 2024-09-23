@@ -1678,6 +1678,10 @@ details.collapse summary::-webkit-details-marker {
   display: none;
 }
 
+.\!hidden {
+  display: none !important;
+}
+
 .h-full {
   height: 100%;
 }
@@ -2008,6 +2012,10 @@ details.collapse summary::-webkit-details-marker {
 
   .sm\:block {
     display: block;
+  }
+
+  .sm\:\!block {
+    display: block !important;
   }
 
   .sm\:flex {
