@@ -54,6 +54,10 @@
     color: blue;
 }
 
+.history-content > div {
+    padding: 24px;
+}
+
 button:hover,
 input[type='submit']:hover {
     transform: scale(1.02);
