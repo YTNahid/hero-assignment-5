@@ -1873,6 +1873,18 @@ details.collapse summary::-webkit-details-marker {
     width: 95%;
   }
 
+  .sm\:\!w-\[24\%\] {
+    width: 24% !important;
+  }
+
+  .sm\:\!w-\[23\%\] {
+    width: 23% !important;
+  }
+
+  .sm\:\!w-\[65\%\] {
+    width: 65% !important;
+  }
+
   .sm\:max-w-9 {
     max-width: 2.25rem;
   }
