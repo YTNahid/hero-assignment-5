@@ -2006,6 +2006,10 @@ details.collapse summary::-webkit-details-marker {
     order: 3;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
   }
