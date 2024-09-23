@@ -2054,6 +2054,10 @@ details.collapse summary::-webkit-details-marker {
     width: 68% !important;
   }
 
+  .sm\:w-\[95\%\] {
+    width: 95%;
+  }
+
   .sm\:max-w-9 {
     max-width: 2.25rem;
   }

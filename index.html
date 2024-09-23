@@ -46,17 +46,17 @@
     </header>
 
     <!-- Popup Deposit Form -->
-    <div class="popup popup-deposit bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-[1000px] shadow-2xl origin-center" area-hidden="true">
+    <div class="popup popup-deposit w-[400px] bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-[1000px] shadow-2xl origin-center sm:w-[95%]" area-hidden="true">
         <span class="popup-close absolute right-[30px] cursor-pointer top-[30px]">x</span>
         <h3 class="heading text-center mb-5">Deposit Money</h3>
-        <form class="column w-[400px]">
+        <form class="column w-full">
             <input type="text" id="deposit-amount" placeholder="Enter amount" class="deposit-amount border border-border-color rounded-lg p-4"/>
             <input type="submit" value="Deposit" class="deposit-button button cursor-pointer">
         </form>
     </div>
 
     <!-- Popup Donation Successfull -->
-    <div class="popup popup-success flex-col items-center bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-[1000px] shadow-2xl origin-center" area-hidden="true">
+    <div class="popup popup-success flex-col items-center bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-[1000px] shadow-2xl origin-center sm:w-[95%]" area-hidden="true">
         <span class="popup-close absolute right-[30px] cursor-pointer top-[30px]">x</span>
         <h3 class="heading text-center mb-5">Congrats!</h3>
         <img src="./assets/coin.png" alt="Coin" class="max-w-9 m-auto">
