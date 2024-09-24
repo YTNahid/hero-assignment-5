@@ -41,9 +41,14 @@
     border: 1px solid var(--primary-color);
 }
 
-/* Deposite Popup */
-.popup-deposite.hide {
-    transform: scale(0);
+/* Popups */
+.show-pop {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+}
+.hide-pop {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
 }
 
 /* History message */

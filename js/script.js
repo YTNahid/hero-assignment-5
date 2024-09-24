@@ -13,7 +13,6 @@ window.addEventListener('scroll', toggleHeaderClass);
 
 // ----- Formatting Taka with commas
 function formatTaka(amount) {
-    // Reusable Function
     const numString = amount.toString();
     const lastThreeDigits = numString.slice(-6);
     const otherDigits = numString.slice(0, -6);
@@ -40,40 +39,47 @@ if (tabButtons && tabContents) {
 }
 
 // ----- PopUps
-// Popup Close
-const closePop = document.querySelectorAll('.popup-close');
+// Open Popup
+function openPopup(id) {
+    const popup = document.querySelector(`#${id}`);
 
-if (closePop) {
-    closePop.forEach((close) => {
-        close.addEventListener('click', function () {
-            this.parentNode.style.transform = 'translate(-50%, -1000px)';
-            this.parentNode.setAttribute('aria-hidden', 'true');
-        });
-    });
+    popup.classList.remove('hide-pop');
+    popup.classList.add('show-pop');
 }
 
-// Popups
-const popups = document.querySelectorAll('.popup');
-
-if (popups) {
-    popups.forEach((pop) => {
-        pop.style.transform = 'translate(-50%, -1000px)';
-        pop.parentNode.setAttribute('aria-hidden', 'true');
-    });
+// Close Popup
+function closePopup(popup) {
+    popup.classList.remove('show-pop');
+    popup.classList.add('hide-pop');
 }
 
-const depositBtn = document.querySelector('.deposit');
+// Handling Popups
+document.querySelectorAll('.popup-button').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
 
-if (depositBtn) {
-    const depositPop = document.querySelector('.popup-deposit');
-
-    depositBtn.addEventListener('click', function () {
-        depositPop.style.transform = 'translate(-50%, -50%)';
-        depositPop.parentNode.setAttribute('aria-hidden', 'false');
+        openPopup(btn.getAttribute('data-target'));
     });
-}
+});
 
-// Deposit
+document.querySelectorAll('.popup-close').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const popup = btn.closest('.popup');
+        closePopup(popup);
+    });
+});
+
+document.querySelectorAll('.popup').forEach((popup) => {
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closeModal(popup);
+        }
+    });
+});
+
+// ----- Deposit
 let currBalance = document.querySelector('.current-balance');
 currBalance.innerText = '0.00';
 
@@ -137,8 +143,7 @@ if (donateBtn) {
                     const successPop = document.querySelector('.popup-success');
                     document.querySelector('.donatedMsg').innerText = `${formatTaka(amount.toFixed(2))}`;
 
-                    successPop.style.transform = 'scale(1) translate(-50%, -50%)';
-                    successPop.parentNode.setAttribute('aria-hidden', 'false');
+                    openPopup(btn.getAttribute('data-target'));
 
                     const title = this.parentNode.parentNode.querySelector('h3').innerText.replace('Donate', '').trim();
                     addHistory(amount, title, 'Donated', updatedBalance);
@@ -150,7 +155,6 @@ if (donateBtn) {
 
 // ----- History Function
 function addHistory(amount, title, action, newBalance) {
-    // Reusable Function
     const content = document.querySelector('.history-content');
 
     const date = new Date();
