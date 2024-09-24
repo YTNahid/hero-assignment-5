@@ -25,7 +25,8 @@
         <div class="row row-full justify-center bg-bg-color pt-4 pb-12 header-content sm:pb-4">
             <div class="row flex-row">
                 <div class="column justify-center sm:order-3 sm:items-end sm:!w-[23%]">
-                    <a href="./index.html" class=""><button class="button sm:px-4 sm:py-2 sm:text-base">Home</button></a>
+                    <a href="./index.html" class=""><button
+                            class="button sm:px-4 sm:py-2 sm:text-base">Home</button></a>
                 </div>
                 <div class="column flex-row items-center justify-center sm:order-1 sm:justify-start sm:!w-[12%]">
                     <img src="./assets/logo.png" alt="Logo" class="max-w-12 sm:max-w-9">
@@ -34,18 +35,20 @@
                 <div class="column flex-row justify-end items-center sm:order-2 sm:justify-end sm:!w-[65%]">
                     <span class="flex flex-row items-center gap-3"><img src="./assets/coin.png" alt="Coin"
                             class="max-w-7"><span class="current-balance text text-xl sm:text-base"></span></span>
-                    <button class="deposit button sm:px-4 sm:py-2 sm:text-base"><span class="sm:hidden">Deposit</span><i class="fa-solid fa-money-bill-transfer !hidden sm:!block sm:py-1"></i></button>
+                    <button class="deposit button sm:px-4 sm:py-2 sm:text-base popup-button" data-target="popup-1"><span
+                            class="sm:hidden">Deposit</span><i
+                            class="fa-solid fa-money-bill-transfer !hidden sm:!block sm:py-1"></i></button>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Popup Deposit Form -->
-    <div class="popup popup-deposit bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl origin-center"
-        area-hidden="true">
+    <div id="popup-1"
+        class="popup popup-deposit w-[400px] bg-white rounded-2xl p-8 z-50 fixed top-1/2 left-1/2 shadow-2xl origin-center sm:w-[95%] hide-pop">
         <span class="popup-close absolute right-[30px] cursor-pointer top-[30px]">x</span>
         <h3 class="heading text-center mb-5">Deposit Money</h3>
-        <form class="column w-[400px]">
+        <form class="column w-full">
             <input type="text" id="deposit-amount" placeholder="Enter amount"
                 class="deposit-amount border border-border-color rounded-lg p-4" />
             <input type="submit" value="Deposit" class="deposit-button button cursor-pointer">
@@ -56,12 +59,16 @@
     <main>
         <section class="section sm:px-[10px]">
             <div class="column py-20">
-                <h2 class="heading flex flex-row items-center gap-3 mb-8">Important FAQ<i class="fa-regular fa-circle-question"></i></h2>
+                <h2 class="heading flex flex-row items-center gap-3 mb-8">Important FAQ<i
+                        class="fa-regular fa-circle-question"></i></h2>
                 <div class="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" checked="checked" />
                     <div class="collapse-title text-xl font-medium">What is the Document Object Model? (DOM)</div>
                     <div class="collapse-content">
-                        <p>The DOM (Document Object Model) is a programming interface for web documents. It represents the structure of a webpage as a tree of objects, where each node is an object representing a part of the document, like elements, attributes, or text. This allows programming languages like JavaScript to manipulate the structure, style, and content of the document.</p>
+                        <p>The DOM (Document Object Model) is a programming interface for web documents. It represents
+                            the structure of a webpage as a tree of objects, where each node is an object representing a
+                            part of the document, like elements, attributes, or text. This allows programming languages
+                            like JavaScript to manipulate the structure, style, and content of the document.</p>
                     </div>
                 </div>
                 <div class="collapse collapse-arrow bg-base-200">
@@ -69,31 +76,42 @@
                     <div class="collapse-title text-xl font-medium">How do you select an element from the DOM?</div>
                     <div class="collapse-content">
                         <p>Elements can be selected from the DOM using JavaScript methods like:
-                           <ul>
-                               <li><code>document.getElementById('id')</code> – Selects an element by its ID.</li>
-                               <li><code>document.querySelector('.class')</code> – Selects the first element that matches the given CSS selector.</li>
-                               <li><code>document.getElementsByClassName('class')</code> – Selects all elements with the given class name.</li>
-                           </ul>
+                        <ul>
+                            <li><code>document.getElementById('id')</code> – Selects an element by its ID.</li>
+                            <li><code>document.querySelector('.class')</code> – Selects the first element that matches
+                                the given CSS selector.</li>
+                            <li><code>document.getElementsByClassName('class')</code> – Selects all elements with the
+                                given class name.</li>
+                        </ul>
                         </p>
                     </div>
                 </div>
                 <div class="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" />
-                    <div class="collapse-title text-xl font-medium">What is event delegation in the context of the DOM and why is it useful?</div>
+                    <div class="collapse-title text-xl font-medium">What is event delegation in the context of the DOM
+                        and why is it useful?</div>
                     <div class="collapse-content">
-                        <p>Event delegation is a technique in JavaScript where instead of adding event listeners to specific child elements, you add a single event listener to a parent element. The event is then captured and handled by the parent, which can detect which child triggered the event. This is useful for optimizing performance, especially in dynamic lists where new elements may be added.</p>
+                        <p>Event delegation is a technique in JavaScript where instead of adding event listeners to
+                            specific child elements, you add a single event listener to a parent element. The event is
+                            then captured and handled by the parent, which can detect which child triggered the event.
+                            This is useful for optimizing performance, especially in dynamic lists where new elements
+                            may be added.</p>
                     </div>
                 </div>
                 <div class="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" />
-                    <div class="collapse-title text-xl font-medium">How do you manipulate an element's attribute and styles using the DOM?</div>
+                    <div class="collapse-title text-xl font-medium">How do you manipulate an element's attribute and
+                        styles using the DOM?</div>
                     <div class="collapse-content">
                         <p>You can manipulate an element's attributes and styles using DOM methods:
-                           <ul>
-                               <li><code>element.setAttribute('attribute', 'value')</code> – Sets an attribute to a new value.</li>
-                               <li><code>element.style.property = 'value'</code> – Directly sets a CSS style property on an element.</li>
-                               <li><code>element.classList.add('class-name')</code> – Adds a class to the element's class list.</li>
-                           </ul>
+                        <ul>
+                            <li><code>element.setAttribute('attribute', 'value')</code> – Sets an attribute to a new
+                                value.</li>
+                            <li><code>element.style.property = 'value'</code> – Directly sets a CSS style property on an
+                                element.</li>
+                            <li><code>element.classList.add('class-name')</code> – Adds a class to the element's class
+                                list.</li>
+                        </ul>
                         </p>
                     </div>
                 </div>
