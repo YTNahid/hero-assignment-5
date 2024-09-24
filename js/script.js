@@ -71,14 +71,6 @@ document.querySelectorAll('.popup-close').forEach((btn) => {
     });
 });
 
-document.querySelectorAll('.popup').forEach((popup) => {
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closeModal(popup);
-        }
-    });
-});
-
 // ----- Deposit
 let currBalance = document.querySelector('.current-balance');
 currBalance.innerText = '0.00';
